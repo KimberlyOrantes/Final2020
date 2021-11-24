@@ -37,6 +37,15 @@ barchartGC(~infected + treatment,data=Guys, type="percent")
 
 The frequency barchart show that the majority population of the guys subgroup were not infected. The percent barchart shows that there isn't much difference in the effectiveness of the drug for covid because it was close to the percentages of the placebo for both the infected and not infected guys.    
    
+# Numerical Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Guys)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
 
 # Gals
 
