@@ -24,6 +24,19 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 
 # Guys
 
+```{r}
+Guys <- filter(FinalData, sex=="guy")
+```
+
+# Plot
+```{r}
+barchartGC(~infected + treatment,data=Guys)
+barchartGC(~infected + treatment,data=Guys, type="percent")
+
+```
+
+The frequency barchart show that the majority population of the guys subgroup were not infected. The percent barchart shows that there isn't much difference in the effectiveness of the drug for covid because it was close to the percentages of the placebo for both the infected and not infected guys.    
+   
 
 # Gals
 
