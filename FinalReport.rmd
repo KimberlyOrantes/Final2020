@@ -155,5 +155,14 @@ barchartGC(~infected + treatment,data=DrugUsers, type="percent")
 ```
 
 The frequency bar chart compares the frequency of Drug Users who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart shows that the majority population of the Drug Users subgroup were OK. The percent bar chart compares the percentages of Drug Users that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 30% less Drug Users that received the study drug Covid91 were infected with covid than the Drug Users who received the placebo. This shows that the study drug Covid91 is effective for Drug Users since it decreased the likelihood of getting infected with covid.
+     
+# Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=DrugUsers)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The first table shows that 33.3% of Drug Users who received the study drug Covid91 got covid while 66.7% of Drug Users who received the placebo got covid. The second table shows that the Drug Users who received the study drug Covid91 had a 3.63% percent likelihood of getting covid while those that received the placebo had a 6.46% likelihood of getting covid. These result show that the study drug Covid91 is effective for Drug Users since it decreases the likelihood of them getting covid.
 
 # Discussion and Conclusion
