@@ -115,8 +115,19 @@ barchartGC(~infected + treatment,data=LGBTQ)
 barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 ```
 
-The frequency bar chart compares the frequency of LGBTQ who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the LGBTQ subgroup were OK. The percent bar chart compares the percentages of LGBTQ that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 38% more LGBTQ that received the study drug Covid91 were infected with covid than the LGBTQ who received the placebo. This shows that the study drug Covid91 is ineffective for LGBTQ since it increased the likelihood of getting infected with covid.  
+The frequency bar chart compares the frequency of LGBTQ who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the LGBTQ subgroup were OK. The percent bar chart compares the percentages of LGBTQ that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 40% more LGBTQ that received the study drug Covid91 were infected with covid than the LGBTQ who received the placebo. This shows that the study drug Covid91 is ineffective for LGBTQ since it increased the likelihood of getting infected with covid.  
    
+# Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=LGBTQ)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The first table shows that 70.7 of LGBTQ who received the study drug Covid91 got covid while only 29.3 of LGBTQ on the placebo got covid. The second table shows that the LGBTQ who were on the drug were 7.97% more likely in getting infected with covid while those who were on the placebo only had a 3.36% likelihood of getting covid. This shows that the drug is ineffective for the LGBTQ group since it increase the likelihood of them getting covid rather than decreasing the odds.    
+
+
+
 # Drug Users
 
 # Discussion and Conclusion
