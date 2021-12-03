@@ -15,7 +15,8 @@ OldData <-read.csv(file="covid91.csv",header=TRUE)
 #recode to remove the annoying "X" from the dataframe
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 
-FinalData <- FinalData %>% mutate_if(is.character, as.factor) 
+FinalData <- FinalData %>% mutate_if(is.character, as.factor)
+FinalData$treatment <- relevel(FinalData$treatment, ref = "placebo")
 ```
 
 # Introduction
@@ -34,7 +35,7 @@ barchartGC(~infected + treatment,data=Guys)
 barchartGC(~infected + treatment,data=Guys, type="percent")
 ```
 
-The frequency barchart show that the majority population of the guys subgroup were not infected. The percent barchart shows that there isn't much difference in the effectiveness of the drug for covid because it was close to the percentages of the placebo for both the infected and not infected guys.    
+The frequency bar chart compares the frequency of patients who received the study drug Covid91 and those that receive the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the guys subgroup were OK. The percent bar chart compares the percentages of patients received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 10% more patients that received the study drug Covid91 were infected with covid. This shows that the study drug Covid91 is ineffective for guys and it increases the likelihood of becoming infected with covid rather than decreasing the odds.       
    
 # Numerical Results
 
@@ -44,7 +45,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-Those that were infected with covid, only 58.16 % of them received the drug and only 41.84% received the placebo. The numerical results show that majority of the guys were ok and uninfected.     
+The first table shows that 58 people who received the study drug Covid91 got infected with covid and 42 people who received the placebo got infected with covid. The second table shows that a majority of the patients were OK, 97.5% received the placebo and were OK but 2.5% got infected with covid. 96.3% were OK when they received the study drug Covid91 but 3.7% got infected with covid after receving the drug. This shows that the drug increases the likelihood of contracting covid.         
     
 # Inferential Results
 
@@ -52,11 +53,6 @@ Those that were infected with covid, only 58.16 % of them received the drug and 
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
-```
-
-The chi-square test shows that there is a significant difference in the expected counts made by the null hypothesis and the observed counts because the p-value is less than 0.05. The Fisher test produced a p-value less than 0.05 as well. The Fisher test also calculated the odds ratio of guys getting infected with COVID when taking the drug was 1.47. The 95% confidence interval is from 1.18 to 1.85. With the results of these tests we can conclude that the drug has a significant effect on the likelihood of guys becoming or not becoming infected with COVID therefore we can reject the null hypothesis. 
-   
-```{r}
 Guymod <- fisher.test(table1)
 guyeff <- (Guymod$estimate/(Guymod$estimate+1))*100
 Guyeffupper <- Guymod$conf.int[2]
@@ -66,7 +62,7 @@ Guyefflowereff <- (Guymod$conf.int[1]/(Guymod$conf.int[1]+1))*100
 options(digits=2)
 ```
 
-The efficacy of the drug for guys is `r guyeff`% with a confidence interval of `r Guyefflowereff` to `r Guyeffuppereff`. From these results, I would advise guys against taking the drug for COVID.  
+The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of guys getting infected with COVID when taking the study drug Covid91 was `r Guymod$estimate` times more than those who received the placebo. This meant the guys were `r Guymod$estimate` times more often Based on these results, we reject the null hypothesis because guys are more likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the guys is `r guyeff`% with a 95% confidence interval of `r Guyefflowereff` to `r Guyeffuppereff`. From these results, I would advise guys against receiving the Covid91 study drug.  
    
 # Gals
 
