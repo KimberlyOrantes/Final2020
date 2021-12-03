@@ -35,7 +35,7 @@ barchartGC(~infected + treatment,data=Guys)
 barchartGC(~infected + treatment,data=Guys, type="percent")
 ```
 
-The frequency bar chart compares the frequency of guys who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the guys subgroup were OK. The percent bar chart compares the percentages of guys that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 10% more guys that received the study drug Covid91 were infected with covid than the guys that received the placebo. This shows that the study drug Covid91 is ineffective for guys and it increases the likelihood of becoming infected with covid rather than decreasing the odds.       
+The frequency bar chart compares the frequency of guys who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart shows that the majority population of the guys subgroup were OK. The percent bar chart compares the percentages of guys that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 10% more guys that received the study drug Covid91 were infected with covid than the guys that received the placebo. This shows that the study drug Covid91 is ineffective for guys and it increases the likelihood of becoming infected with covid rather than decreasing the odds.       
    
 # Numerical Results
 
@@ -76,7 +76,7 @@ barchartGC(~infected + treatment,data=Gals)
 barchartGC(~infected + treatment,data=Gals, type="percent")
 ```
 
-The frequency bar chart compares the frequency of gals who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the gals subgroup were OK. The percent bar chart compares the percentages of gals that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 30% more gals that received the placebo were infected with covid than the gals who received the study drug Covid91. This shows that the study drug Covid91 is effective for gals since it decreased the likelihood of getting infected with covid.       
+The frequency bar chart compares the frequency of gals who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart shows that the majority population of the gals subgroup were OK. The percent bar chart compares the percentages of gals that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 30% more gals that received the placebo were infected with covid than the gals who received the study drug Covid91. This shows that the study drug Covid91 is effective for gals since it decreased the likelihood of getting infected with covid.       
 
 # Numerical Results
 ```{r}
@@ -115,7 +115,7 @@ barchartGC(~infected + treatment,data=LGBTQ)
 barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 ```
 
-The frequency bar chart compares the frequency of LGBTQ who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the LGBTQ subgroup were OK. The percent bar chart compares the percentages of LGBTQ that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 40% more LGBTQ that received the study drug Covid91 were infected with covid than the LGBTQ who received the placebo. This shows that the study drug Covid91 is ineffective for LGBTQ since it increased the likelihood of getting infected with covid.  
+The frequency bar chart compares the frequency of LGBTQ who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart shows that the majority population of the LGBTQ subgroup were OK. The percent bar chart compares the percentages of LGBTQ that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 40% more LGBTQ that received the study drug Covid91 were infected with covid than the LGBTQ who received the placebo. This shows that the study drug Covid91 is ineffective for LGBTQ since it increased the likelihood of getting infected with covid.  
    
 # Numerical Results
 ```{r}
@@ -143,5 +143,17 @@ options(digits=3)
 The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of LGBTQ getting infected with COVID when taking the study drug Covid91 was `r LGBTQmod$estimate` times more than those who received the placebo. This meant the LGBTQ were `r LGBTQmod$estimate` times more likely to get covid since they received the study drug Covid91. Based on these results, we reject the null hypothesis because LGBTQ are more likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the LGBTQ is `r LGBTQeff`% with a 95% confidence interval of `r LGBTQefflowereff` to `r LGBTQeffuppereff`. From these results, I would advise LGBTQ against receiving the Covid91 study drug.
    
 # Drug Users
+
+```{r}
+DrugUsers <- filter(FinalData, DrugUser=="yes")
+```
+
+# Graphical Results
+```{r}
+barchartGC(~infected + treatment,data=DrugUsers)
+barchartGC(~infected + treatment,data=DrugUsers, type="percent")
+```
+
+The frequency bar chart compares the frequency of Drug Users who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart shows that the majority population of the Drug Users subgroup were OK. The percent bar chart compares the percentages of Drug Users that received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 30% less Drug Users that received the study drug Covid91 were infected with covid than the Drug Users who received the placebo. This shows that the study drug Covid91 is effective for Drug Users since it decreased the likelihood of getting infected with covid.
 
 # Discussion and Conclusion
