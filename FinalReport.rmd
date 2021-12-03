@@ -45,7 +45,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-The first table shows that 58 guys who received the study drug Covid91 got infected with covid and 42 guys who received the placebo got infected with covid. The second table shows that a majority of the guys were OK, 97.5% received the placebo and were OK but 2.5% got infected with covid. 96.3% were OK when they received the study drug Covid91 but 3.7% got infected with covid after receiving the drug. This shows that the drug increases the likelihood of contracting covid.         
+The first table shows that 58% of guys who received the study drug Covid91 got infected with covid and 42% of guys who received the placebo got infected with covid. The second table shows that a majority of the guys were OK, 97.5% received the placebo and were OK but 2.5% got infected with covid. 96.3% were OK when they received the study drug Covid91 but 3.7% got infected with covid after receiving the drug. This shows that the drug increases the likelihood of contracting covid.         
     
 # Inferential Results
 
@@ -85,7 +85,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-The first table shows that 67 gals who received the placebo got infected with covid while only 33 gals who received the study drug Covid91 got infected with covid. The second table shows that the gals that received the placebo 8.7% of them got covid and the gals that received the drug only 4.4% of them got covid. These results show that the study drug Covid91 is effective for gals since it decreases the likelihood of getting infected with covid.  
+The first table shows that 67% of gals who received the placebo got infected with covid while only 33% of gals who received the study drug Covid91 got infected with covid. The second table shows that the gals that received the placebo 8.7% of them got covid and the gals that received the drug only 4.4% of them got covid. These results show that the study drug Covid91 is effective for gals since it decreases the likelihood of getting infected with covid.  
     
 # Inferential Results
 ```{r}
@@ -101,7 +101,7 @@ Galefflowereff <- (Galmod$conf.int[1]/(Galmod$conf.int[1]+1))*100
 options(digits=3)
 ```
 
-The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of gals getting infected with COVID when taking the study drug Covid91 was `r Galmod$estimate` times less than those who received the placebo. This meant the guys were `r Galmod$estimate` times less likely to get covid since they received the study drug Covid91. Based on these results, we reject the null hypothesis because gals are less likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the gals is `r galeff`% with a 95% confidence interval of `r Galefflowereff` to `r Galeffuppereff`. From these results, I would advise gals to receive the Covid91 study drug.
+The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of gals getting infected with COVID when taking the study drug Covid91 was `r Galmod$estimate` times less than those who received the placebo. This meant the gals were `r Galmod$estimate` times less likely to get covid since they received the study drug Covid91. Based on these results, we reject the null hypothesis because gals are less likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the gals is `r galeff`% with a 95% confidence interval of `r Galefflowereff` to `r Galeffuppereff`. From these results, I would advise gals to receive the Covid91 study drug.
     
 # LGBTQ
 
@@ -124,10 +124,24 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-The first table shows that 70.7 of LGBTQ who received the study drug Covid91 got covid while only 29.3 of LGBTQ on the placebo got covid. The second table shows that the LGBTQ who were on the drug were 7.97% more likely in getting infected with covid while those who were on the placebo only had a 3.36% likelihood of getting covid. This shows that the drug is ineffective for the LGBTQ group since it increase the likelihood of them getting covid rather than decreasing the odds.    
+The first table shows that 70.7% of LGBTQ who received the study drug Covid91 got covid while only 29.3% of LGBTQ on the placebo got covid. The second table shows that the LGBTQ who were on the drug were 7.97% more likely in getting infected with covid while those who were on the placebo only had a 3.36% likelihood of getting covid. This shows that the drug is ineffective for the LGBTQ group since it increase the likelihood of them getting covid rather than decreasing the odds.    
+   
+# Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+LGBTQmod <- fisher.test(table1)
+LGBTQeff <- (LGBTQmod$estimate/(LGBTQmod$estimate+1))*100
+LGBTQeffupper <- LGBTQmod$conf.int[2]
+LGBTQeffuppereff <- (LGBTQmod$conf.int[2]/(LGBTQmod$conf.int[2]+1))*100
+LGBTQefflower <- LGBTQmod$conf.int[1]
+LGBTQefflowereff <- (LGBTQmod$conf.int[1]/(LGBTQmod$conf.int[1]+1))*100
+options(digits=3)
+```
 
-
-
+The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of LGBTQ getting infected with COVID when taking the study drug Covid91 was `r LGBTQmod$estimate` times more than those who received the placebo. This meant the LGBTQ were `r LGBTQmod$estimate` times more likely to get covid since they received the study drug Covid91. Based on these results, we reject the null hypothesis because LGBTQ are more likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the LGBTQ is `r LGBTQeff`% with a 95% confidence interval of `r LGBTQefflowereff` to `r LGBTQeffuppereff`. From these results, I would advise LGBTQ against receiving the Covid91 study drug.
+   
 # Drug Users
 
 # Discussion and Conclusion
