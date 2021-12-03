@@ -35,7 +35,7 @@ barchartGC(~infected + treatment,data=Guys)
 barchartGC(~infected + treatment,data=Guys, type="percent")
 ```
 
-The frequency bar chart compares the frequency of patients who received the study drug Covid91 and those that receive the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the guys subgroup were OK. The percent bar chart compares the percentages of patients received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 10% more patients that received the study drug Covid91 were infected with covid. This shows that the study drug Covid91 is ineffective for guys and it increases the likelihood of becoming infected with covid rather than decreasing the odds.       
+The frequency bar chart compares the frequency of guys who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the guys subgroup were OK. The percent bar chart compares the percentages of patients received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 10% more guys that received the study drug Covid91 were infected with covid than the guys that received the placebo. This shows that the study drug Covid91 is ineffective for guys and it increases the likelihood of becoming infected with covid rather than decreasing the odds.       
    
 # Numerical Results
 
@@ -59,12 +59,24 @@ Guyeffupper <- Guymod$conf.int[2]
 Guyeffuppereff <- (Guymod$conf.int[2]/(Guymod$conf.int[2]+1))*100
 Guyefflower <- Guymod$conf.int[1]
 Guyefflowereff <- (Guymod$conf.int[1]/(Guymod$conf.int[1]+1))*100
-options(digits=2)
+options(digits=3)
 ```
 
 The hypothesis of this study is that there is a noticeable difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The null hypothesis would then be that there is little to no difference between those that received the study drug Covid91 and those that received a placebo in getting infected with COVID. The Chi-squared  and Fisher tests both produced a p-value less than 0.05 which is the probability under the null hypothesis conditions. The Fisher test calculated the odds ratio of guys getting infected with COVID when taking the study drug Covid91 was `r Guymod$estimate` times more than those who received the placebo. This meant the guys were `r Guymod$estimate` times more often Based on these results, we reject the null hypothesis because guys are more likely to get infected with COVID after receiving the study drug Covid91. The efficacy of the drug for the guys is `r guyeff`% with a 95% confidence interval of `r Guyefflowereff` to `r Guyeffuppereff`. From these results, I would advise guys against receiving the Covid91 study drug.  
    
 # Gals
+
+```{r}
+Gals <- filter(FinalData, sex=="gal")
+```
+
+# Graphical Results
+```{r}
+barchartGC(~infected + treatment,data=Gals)
+barchartGC(~infected + treatment,data=Gals, type="percent")
+```
+
+The frequency bar chart compares the frequency of gals who received the study drug Covid91 and those that received the placebo when they have covid or are OK. The frequency bar chart show that the majority population of the gals subgroup were OK. The percent bar chart compares the percentages of patients received the study drug Covid91 and those that receive the placebo. The percent bar chart shows that about 30% more gals that received the placebo were infected with covid than the gals who received the study drug Covid91. This shows that the study drug Covid91 is effective for gals since it decreased the likelihood of getting infected with covid.       
 
 
 # LGBTQ
