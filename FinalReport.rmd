@@ -53,9 +53,17 @@ Those that were infected with covid, only 58.16 % of them received the drug and 
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
+Guymod <- fisher.test(table1)
 ```
 
-The chi-square test shows that there is a significant difference in the expected counts made by the null hypothesis and the observed counts because the p-value is less than 0.05. The Fisher test produced a p-value less than 0.05 as well. The Fisher test also calculated the odds ratio of guys getting infected with COVID when taking the drug was 1.47. The 95% confidence interval is from 1.18 to 1.85. With the results of these tests we can conclude that the drug has a significant effect on the likelihood of guys becoming or not becoming infected with COVID therefore we can reject the null hypothesis.   
+The chi-square test shows that there is a significant difference in the expected counts made by the null hypothesis and the observed counts because the p-value is less than 0.05. The Fisher test produced a p-value less than 0.05 as well. The Fisher test also calculated the odds ratio of guys getting infected with COVID when taking the drug was 1.47. The 95% confidence interval is from 1.18 to 1.85. With the results of these tests we can conclude that the drug has a significant effect on the likelihood of guys becoming or not becoming infected with COVID therefore we can reject the null hypothesis. From the results produced I would advise guys against taking the drug.   
+```{r}
+guyest <- Guymod$estimate
+guyeff <- guyest/(guyest + 1)
+```
+
+The efficacy of the drug for guys is `r guyeff`.  
+   
    
 # Gals
 
